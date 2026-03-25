@@ -3,6 +3,7 @@ import {
     BookOpen,
     FolderGit2,
     LayoutGrid,
+    MessageCircleQuestion,
     Package,
     ScanBarcode,
     Tags,
@@ -24,6 +25,7 @@ import { dashboard } from '@/routes';
 import * as categoriesRoutes from '@/routes/categories';
 import * as posRoutes from '@/routes/pos';
 import * as productsRoutes from '@/routes/products';
+import * as tanyaRoutes from '@/routes/tanya';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -48,6 +50,12 @@ const mainNavItems: NavItem[] = [
         title: 'POS',
         href: posRoutes.index(),
         icon: ScanBarcode,
+        matchStartsWith: true,
+    },
+    {
+        title: 'Tanya',
+        href: tanyaRoutes.index(),
+        icon: MessageCircleQuestion,
         matchStartsWith: true,
     },
 ];

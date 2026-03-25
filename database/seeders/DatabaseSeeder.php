@@ -41,5 +41,7 @@ class DatabaseSeeder extends Seeder
         foreach ($samples as $row) {
             Product::query()->create([...$row, 'is_active' => true]);
         }
+
+        $this->call(KnowledgeItemSeeder::class);
     }
 }

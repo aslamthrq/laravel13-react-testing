@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePosSaleRequest;
+use App\Models\KnowledgeItem;
 use App\Models\Product;
 use App\Models\Sale;
 use App\Models\SaleItem;
@@ -111,6 +112,12 @@ class PosController extends Controller
                 ]);
 
                 $product->decrement('stock', $line['quantity']);
+
+                // Sync konten knowledge_items agar pertanyaan stok berbasis data terbaru.
+                // (decrement() tidak memicu model events, jadi kita sinkronkan manual)
+                $product->refresh();
+                $product->loadMissing('category:id,name');
+                KnowledgeItem::syncFromProduct($product);
             }
 
             $sale->update([

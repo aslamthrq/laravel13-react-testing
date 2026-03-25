@@ -11,4 +11,6 @@ export type NavItem = {
     href: NonNullable<InertiaLinkProps['href']>;
     icon?: LucideIcon | null;
     isActive?: boolean;
+    /** When true, active if current path starts with item href (for nested routes). */
+    matchStartsWith?: boolean;
 };

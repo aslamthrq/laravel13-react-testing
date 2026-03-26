@@ -74,7 +74,7 @@ class TanyaController extends Controller
             report($e);
 
             return response()->json([
-                'message' => 'Maaf, layanan AI tidak dapat menjawab saat ini. Pastikan `OPENAI_API_KEY` (atau provider lain di config/ai.php) sudah benar, lalu coba lagi.',
+                'message' => 'Maaf, layanan AI tidak dapat menjawab saat ini. Pastikan provider AI di `config/ai.php` dan variabel env terkait (mis. `OLLAMA_BASE_URL`/`OLLAMA_*`) sudah benar, lalu coba lagi.',
             ], 503);
         }
 

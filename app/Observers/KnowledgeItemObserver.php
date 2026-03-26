@@ -28,7 +28,8 @@ class KnowledgeItemObserver
 
         try {
             // Sesuaikan dimensi dengan migration `knowledge_items.embedding` (pgvector).
-            $item->embedding = Str::of($text)->toEmbeddings(dimensions: 1536);
+            // Ollama model `nomic-embed-text` default menghasilkan vektor 768 dimensi.
+            $item->embedding = Str::of($text)->toEmbeddings(dimensions: 768);
         } catch (\Throwable $e) {
             // Embedding gagal (mis. provider embedding tidak bisa diakses);
             // biarkan null tapi catat agar mudah debug.
@@ -43,7 +44,7 @@ class KnowledgeItemObserver
                 sleep(2 * $attempt);
 
                 try {
-                    $item->embedding = Str::of($text)->toEmbeddings(dimensions: 1536);
+                    $item->embedding = Str::of($text)->toEmbeddings(dimensions: 768);
 
                     return;
                 } catch (\Throwable $e2) {

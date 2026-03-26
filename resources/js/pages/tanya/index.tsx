@@ -179,11 +179,11 @@ export default function TanyaPage({
                     <CardHeader className="pb-2">
                         <CardTitle className="text-base">Percakapan</CardTitle>
                         <CardDescription>
-                            Butuh{' '}
-                            <code className="text-xs">OPENAI_API_KEY</code> di{' '}
-                            <code className="text-xs">.env</code> (atau provider
-                            lain di <code className="text-xs">config/ai.php</code>
-                            ).
+                            Butuh konfigurasi provider AI di{' '}
+                            <code className="text-xs">.env</code> (mis{' '}
+                            <code className="text-xs">OLLAMA_BASE_URL</code> dan{' '}
+                            <code className="text-xs">OLLAMA_*_MODEL</code>) atau
+                            provider lain di <code className="text-xs">config/ai.php</code>.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="flex flex-1 flex-col gap-3">

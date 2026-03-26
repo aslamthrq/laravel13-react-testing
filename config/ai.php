@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'default' => 'openai',
+    'default' => 'ollama',
     'default_for_images' => 'gemini',
     'default_for_audio' => 'openai',
     'default_for_transcription' => 'openai',
-    'default_for_embeddings' => 'openai',
+    'default_for_embeddings' => 'ollama',
     'default_for_reranking' => 'cohere',
 
     /*
@@ -103,6 +103,16 @@ return [
             'driver' => 'ollama',
             'key' => env('OLLAMA_API_KEY', ''),
             'url' => env('OLLAMA_BASE_URL', 'http://localhost:11434'),
+            'models' => [
+                'text' => [
+                    'default' => env('OLLAMA_TEXT_MODEL', 'llama3'),
+                ],
+                'embeddings' => [
+                    'default' => env('OLLAMA_EMBEDDINGS_MODEL', 'nomic-embed-text'),
+                    // Keep consistent with pgvector column `knowledge_items.embedding` dimensions.
+                    'dimensions' => (int) env('OLLAMA_EMBEDDINGS_DIMENSIONS', 768),
+                ],
+            ],
         ],
 
         'openai' => [
